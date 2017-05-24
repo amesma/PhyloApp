@@ -13,13 +13,13 @@ shinyUI(fluidPage(
   fluidRow(
     
     column(3, offset = 1,
-           
-           textInput("genus_text", label = "", value = "Enter Genus")
+           h3("Enter Genus"),
+           textInput("genus_text", label = "")
     ),
     
     column(3, offset = 3,
-           
-           textInput("species_text", label = "", value = "Enter Species")
+           h3("Enter Species"),
+           textInput("species_text", label = "")
     )
     #Input box: genus
     #Input box: species
@@ -32,7 +32,7 @@ shinyUI(fluidPage(
   fluidRow(
     
     column(6, offset = 3, align = "center",
-           actionButton("submit_form", label = "Submit"), tags$style(type='text/css', "#button { vertical-align- middle; height- 50px; width- 100%; font-size- 30px;}")
+           submitButton("Submit"), tags$style(type='text/css', "#button { vertical-align- middle; height- 50px; width- 100%; font-size- 30px;}")
     )
     
   ),
