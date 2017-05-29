@@ -14,6 +14,12 @@ shinyServer(function(input, output) {
   
   #csv_species <- NULL
   
+  observeEvent(
+    eventExpr = input[["submit_button"]],
+    handlerExpr = {
+      print("PRESSED") #simulation code can go here
+
+  
   show_spe <- FALSE
   show_fam <- FALSE
   show_ord <- FALSE
@@ -43,9 +49,10 @@ shinyServer(function(input, output) {
       species <- (input$species_text)
     #now you get a data frame consisting of all the matched species, just match first row
     #if user_data has more than one row, alert:
-    csv_sub <- subset(phy, !duplicated(res[c(input$species_text)]), genus.species == input$species_text)
-   
-    #csv_sub[1,]
+      csv_sub <- subset(phy, genus.species == input$species_text)
+     
+      #csv_sub <- subset(csv_sub, !duplicated(csv_sub[c(input$species_text)]), select = c(input$species_text)
+      csv_sub <- csv_sub[1,]
     
     #obtains user input about which taxonomic orders to show
     
@@ -64,6 +71,7 @@ shinyServer(function(input, output) {
     {
       show_ord <- TRUE
       ord <- csv_sub$order
+      
     }
     
     if (family)
@@ -81,7 +89,7 @@ shinyServer(function(input, output) {
       # paste("The species is: ", order, " ", family, " ", genus, " ", species)
       #}
       
-          paste(class, " ", order, " ", family, " ", species)
+          paste(cla, " ", ord, " ", fam, " ", species)
 
     }
     else  {
@@ -90,5 +98,5 @@ shinyServer(function(input, output) {
     #if genus and species exist
     #then output the selected variables
   })
-  
+    })
 })

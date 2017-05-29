@@ -27,14 +27,14 @@ shinyUI(fluidPage(
   fluidRow(
     column(12,
     h3("Check the taxonomic data you wish to save."),
-    checkboxGroupInput("order_choices", "Choose which data to show:", choices = list("Order" = 1, "Class" = 2, "Family" = 3), selected = NULL)
+    checkboxGroupInput("order_choices", "Choose which data to show:", c("Order", "Class", "Family"), selected = NULL)
     )
   ),
   
   fluidRow(
     
     column(6, offset = 3, align = "center",
-           submitButton("Submit"), tags$style(type='text/css', "#button { vertical-align- middle; height- 50px; width- 100%; font-size- 30px;}")
+           actionButton("submit_button", "Submit"), tags$style(type='text/css', "#button { vertical-align- middle; height- 50px; width- 100%; font-size- 30px;}")
     )
     
   ),
