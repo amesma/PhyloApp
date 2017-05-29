@@ -12,13 +12,8 @@ shinyUI(fluidPage(
   
   fluidRow(
     
-    column(3, offset = 1,
-           h3("Enter Genus"),
-           textInput("genus_text", label = "")
-    ),
-    
-    column(3, offset = 3,
-           h3("Enter Species"),
+    column(6, offset = 1,
+           h3("Enter the genus and species you wish to find separated by a space"),
            textInput("species_text", label = "")
     )
     #Input box: genus
@@ -29,6 +24,13 @@ shinyUI(fluidPage(
     #Output box
     
   ),
+  fluidRow(
+    column(12,
+    h3("Check the taxonomic data you wish to save."),
+    checkboxGroupInput("order_choices", "Choose which data to show:", choices = list("Order" = 1, "Class" = 2, "Family" = 3), selected = NULL)
+    )
+  ),
+  
   fluidRow(
     
     column(6, offset = 3, align = "center",
